@@ -1,0 +1,25 @@
+{
+  "name": "ejs-challenge",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Iryna Predborska",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^2.7.4",
+    "express": "^4.17.1",
+    "lodash": "^4.17.15"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mala-biedronka/blog-website.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mala-biedronka/blog-website/issues"
+  },
+  "homepage": "https://github.com/mala-biedronka/blog-website#readme",
+  "description": ""
+}
