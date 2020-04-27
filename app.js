@@ -31,6 +31,9 @@ app.get("/compose", function (req, res) {
     res.render("compose");
 });
 
+
+
+
 //Post requests
 app.post("/compose", function (req, res) {
     let newTitle = req.body.newTitle;
@@ -45,6 +48,14 @@ app.post("/compose", function (req, res) {
     res.redirect("/");
 });
 
+app.get("/:test", function (req, res) {
+    let test = req.params.test;
+    for (let i=0; i<posts.length; i++) {
+        if (test === posts[i].title) {
+            console.log("Match found");
+        }
+    }
+});
 
 
 app.listen(3000, function () {
