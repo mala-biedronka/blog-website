@@ -6,4 +6,20 @@
     <p><%= homePageContent %></p>
 </div>
 
+
+<!--For Loop-->
+    <% for (let i = 0; i < newPostContent.length; i++){ %>
+        <div class="container">
+           <h1> <%= newPostContent[i].title %> </h1>
+            <p> <%= newPostContent[i].post %> </p>
+        </div>
+    <%}%>
+
+<!--forEach() method-->
+<!--newPostContent.forEach(function (post) {-->
+<!--console.log(post.title);-->
+<!--}) -->
+
+
+
 <%- include("partials/footer"); -%>

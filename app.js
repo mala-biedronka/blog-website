@@ -16,8 +16,7 @@ const posts = [];
 
 //Get requests
 app.get("/", function (req, res) {
-    res.render("home", {homePageContent: homeStartingContent});
-    console.log(posts);
+    res.render("home", {homePageContent: homeStartingContent, newPostContent: posts});
 });
 
 app.get("/about", function (req, res) {
@@ -41,6 +40,7 @@ app.post("/compose", function (req, res) {
         title: newTitle,
         post: postText
     };
+
     posts.push(post);
     res.redirect("/");
 });
