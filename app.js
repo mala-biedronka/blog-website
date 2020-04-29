@@ -33,8 +33,6 @@ app.get("/compose", function (req, res) {
 });
 
 
-
-
 //Post requests
 app.post("/compose", function (req, res) {
     let newTitle = req.body.newTitle;
