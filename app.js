@@ -49,14 +49,13 @@ app.post("/compose", function (req, res) {
     res.redirect("/");
 });
 
-app.get("/posts/:test", function (req, res) {
-    let test = _.lowerCase(req.params.test);
+app.get("/posts/:newpost", function (req, res) {
+    //Declare a part of URL which prespecified as a parameter
+    let newpost = _.lowerCase(req.params.newpost);
     for (let i=0; i<posts.length; i++) {
         let postTitle = _.lowerCase(posts[i].title);
-        if (test === postTitle) {
-            console.log("Match found");
-        } else {
-            console.log("Not match");
+        if (newpost === postTitle) {
+            res.render("post", {postTitle: posts[i].title, postContent: posts[i].post})
         }
     }
 });
