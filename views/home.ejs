@@ -11,7 +11,7 @@
     <% for (let i = 0; i < newPostContent.length; i++){ %>
         <div class="container">
             <h1> <%= newPostContent[i].title %> </h1>
-            <p> <%= newPostContent[i].post.substring(0, 100) + " ..." %> </p>
+            <p> <%= newPostContent[i].post.substring(0, 100) + " ..." %> <a href="/posts/<%= newPostContent[i].title %>">Read more</a> </p>
         </div>
     <%}%>
 
