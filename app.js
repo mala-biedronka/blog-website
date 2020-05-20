@@ -24,17 +24,14 @@ const blogSchema = new mongoose.Schema({
 });
 const Blog = mongoose.model("Blog", blogSchema);
 
-const blog = new Blog({
-    title: "Such a great day",
-    postContent: "Today was a great day"
-});
-
-blog.save();
-
 
 //Get requests
 app.get("/", function (req, res) {
-    res.render("home", {homePageContent: homeStartingContent, newPostContent: posts});
+
+Blog.find(function (err, docs) {
+    res.render("home", {homePageContent: homeStartingContent, newPostContent: docs});
+});
+
 });
 
 app.get("/about", function (req, res) {
@@ -55,24 +52,26 @@ app.post("/compose", function (req, res) {
     let newTitle = req.body.newTitle;
     let postText = req.body.postText;
 
-    let post = {
+    const newBlog = new Blog({
         title: newTitle,
-        post: postText
-    };
-
-    posts.push(post);
+        postContent: postText
+    });
+    newBlog.save();
     res.redirect("/");
 });
 
 app.get("/posts/:newpost", function (req, res) {
     //Declare a part of URL which prespecified as a parameter
     let newpost = _.lowerCase(req.params.newpost);
-    for (let i=0; i<posts.length; i++) {
-        let postTitle = _.lowerCase(posts[i].title);
-        if (newpost === postTitle) {
-            res.render("post", {postTitle: posts[i].title, postContent: posts[i].post})
+
+    Blog.find(function (err, docs) {
+        for (let i=0; i<docs.length; i++) {
+            let postId = _.lowerCase(docs[i]._id);
+            if (newpost === postId) {
+                res.render("post", {postTitle: docs[i].title, postContent: docs[i].postContent})
+            }
         }
-    }
+    })
 });
 
 
